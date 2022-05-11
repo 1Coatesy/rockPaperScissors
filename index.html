@@ -7,52 +7,62 @@
 <body>
   <script>
 
-    const playerSelection = prompt("Rock, Paper, Scissors?");
-    const computerSelection = computerPlay();
-    let playerScore = 0;
-    let computerScore= 0;
-
     function computerPlay(){
         const myArray = ["rock", "paper", "scissors"];
         return myArray[~~(Math.random() * myArray.length)];    
     }
 
+    let playerScore = 0;
+    let computerScore= 0;
+
     function playRound(playerSelection, computerSelection){
 
         computerSelection = computerPlay().toLowerCase();
-        playerSelection = playerSelection.toLowerCase();
 
         if ((playerSelection === "rock" && computerSelection === "scissors") ||
             (playerSelection === "scissors" && computerSelection === "paper") ||
             (playerSelection === "paper" && computerSelection === "rock")) {
                 
                 playerScore ++;
-                console.log('You won! ' + playerSelection + " beats " + computerSelection
-                + ". Player score: " + playerScore + " Computer score: " + computerScore);
-
+                return 'You won! ' + playerSelection + " beats " + computerSelection
+                + ". Player score: " + playerScore + " Computer score: " + computerScore;
+              
            }
 
         else if(playerSelection === computerSelection){
 
-            console.log('It\'s a draw. You both chose ' + playerSelection
-            + ". Player score: " + playerScore + " Computer score: " + computerScore);
+            return 'It\'s a draw. You both chose ' + playerSelection
+            + ". Player score: " + playerScore + " Computer score: " + computerScore;
         }
         else {
             computerScore ++;
-            console.log("You lost!");
+            return 'You lost!' + ". Player score: " + playerScore + " Computer score: " + computerScore;
         }
-    }
+      }
 
-    console.log(playRound(playerSelection, computerSelection));
-
-    /*function game(){
-        playRound(playerSelection, computerSelection);
+        function game(){
 
         for(let i = 0; i < 5; i++){
 
+          let playerSelection = prompt("Rock, Paper, Scissors?");
+          playerSelection = playerSelection.toLowerCase();
+          const computerSelection = computerPlay();
+          console.log(playRound(playerSelection, computerSelection));
+
+          if (playerScore > computerScore){
+            console.log(`You're the winner! Final Score: ${playerScore} to ${computerScore}`);
+          } 
+          else if (computerScore > playerScore) {
+                console.log(`You're the loser. Final Score: ${playerScore} to ${computerScore}`);
+          } 
+          else
+                console.log(`You tied. Final Score: ${playerScore} to ${computerScore}`);
+          }
         }
 
-    }*/
+    
+
+    game();
 
   </script>
 </body>
