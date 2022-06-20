@@ -5,65 +5,19 @@
   <title>Page Title</title>
 </head>
 <body>
-  <script>
 
-    function computerPlay(){
-        const myArray = ["rock", "paper", "scissors"];
-        return myArray[~~(Math.random() * myArray.length)];    
-    }
+  <button type="button" class="choices" id="Rock">Rock</button>
+  <button type="button" class="choices" id="Paper">Paper</button>
+  <button type="button" class="choices" id="Scissors">Scissors</button>
 
-    let playerScore = 0;
-    let computerScore= 0;
+  <div id="results">
 
-    function playRound(playerSelection, computerSelection){
+  </div>
+  <div id="score">
 
-        computerSelection = computerPlay().toLowerCase();
+  </div>
 
-        if ((playerSelection === "rock" && computerSelection === "scissors") ||
-            (playerSelection === "scissors" && computerSelection === "paper") ||
-            (playerSelection === "paper" && computerSelection === "rock")) {
-                
-                playerScore ++;
-                return 'You won! ' + playerSelection + " beats " + computerSelection
-                + ". Player score: " + playerScore + " Computer score: " + computerScore;
-              
-           }
+  <script src="script.js"></script>
 
-        else if(playerSelection === computerSelection){
-
-            return 'It\'s a draw. You both chose ' + playerSelection
-            + ". Player score: " + playerScore + " Computer score: " + computerScore;
-        }
-        else {
-            computerScore ++;
-            return 'You lost!' + ". Player score: " + playerScore + " Computer score: " + computerScore;
-        }
-      }
-
-        function game(){
-
-        for(let i = 0; i < 5; i++){
-
-          let playerSelection = prompt("Rock, Paper, Scissors?");
-          playerSelection = playerSelection.toLowerCase();
-          const computerSelection = computerPlay();
-          console.log(playRound(playerSelection, computerSelection));
-
-          if (playerScore > computerScore){
-            console.log(`You're the winner! Final Score: ${playerScore} to ${computerScore}`);
-          } 
-          else if (computerScore > playerScore) {
-                console.log(`You're the loser. Final Score: ${playerScore} to ${computerScore}`);
-          } 
-          else
-                console.log(`You tied. Final Score: ${playerScore} to ${computerScore}`);
-          }
-        }
-
-    
-
-    game();
-
-  </script>
 </body>
 </html>
